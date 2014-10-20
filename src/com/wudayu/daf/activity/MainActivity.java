@@ -1,5 +1,6 @@
 package com.wudayu.daf.activity;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
 import com.wudayu.daf.R;
@@ -17,5 +18,10 @@ import com.wudayu.daf.R;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
+
+	@AfterViews
+	void afterViews() {
+		
+	}
 
 }
