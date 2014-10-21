@@ -72,7 +72,7 @@ public class PageSelectBar extends LinearLayout {
 		}
 	}
 
-	private void selectItem(int position) {
+	public void selectItemUI(int position) {
 		for (int i = 0; i < mItems.size(); ++i) {
 			View item = mItems.get(i);
 			RelativeLayout rl = (RelativeLayout) item.findViewById(R.id.rl_page_select_bar_item);
@@ -99,10 +99,13 @@ public class PageSelectBar extends LinearLayout {
 					rl.setBackgroundResource(bgInActived[i]);
 			}
 		}
+	}
 
-		if (mPageSelectedListener != null) {
-			mPageSelectedListener.onPageSelected(position);
-		}
+	private void selectItem(int position) {
+		selectItemUI(position);
+
+		if (this.mPageSelectedListener != null)
+			this.mPageSelectedListener.onPageSelected(position);
 	}
 
 	private class PageOnClickListener implements OnClickListener {
