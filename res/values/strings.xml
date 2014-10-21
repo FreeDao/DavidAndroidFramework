@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">DavidAndroidFramework</string>
+    <!-- 常用 -->
+    <string name="app_name">DAF</string>
+    <!-- 弹出框 -->
+    <string name="btn_take_photo">拍照</string>
+    <string name="btn_pick_photo">从手机相册中选择</string>
+    <string name="btn_select_pic_cancel">取消</string>
+    <!-- 加载框 -->
+    <string name="str_loading">载入中&#8230;</string>
 </resources>

@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity {
 
 	@AfterViews
 	void afterViews() {
-		
+
 	}
 
 }
