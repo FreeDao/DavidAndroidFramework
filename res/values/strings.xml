@@ -7,4 +7,8 @@
     <string name="btn_select_pic_cancel">取消</string>
     <!-- 加载框 -->
     <string name="str_loading">载入中&#8230;</string>
+    <!-- 主界面 -->
+    <string name="page_select_01">界面一</string>
+    <string name="page_select_02">界面二</string>
+    <string name="page_select_03">界面三</string>
 </resources>

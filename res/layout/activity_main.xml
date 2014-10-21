@@ -2,90 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    <LinearLayout
-        android:id="@+id/ll_bottom"
+    <com.wudayu.daf.views.PageSelectBar
+        android:id="@+id/psb_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp53"
         android:layout_alignParentBottom="true"
         android:background="@drawable/shape_ll_bottom_main_activity"
         android:baselineAligned="true"
-        android:orientation="horizontal" >
-        <RelativeLayout
-            android:id="@+id/rl_community"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical" >
-            <ImageView
-                android:id="@+id/iv_community"
-                android:layout_width="@dimen/dp34"
-                android:layout_height="@dimen/dp34"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@null"
-                android:scaleType="fitXY"
-                android:src="@color/col_app" />
-            <TextView
-                android:id="@+id/tv_community"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_community"
-                android:layout_centerHorizontal="true"
-                android:text="@string/app_name"
-                android:textColor="@color/letter_grey_deep_2"
-                android:textSize="@dimen/px22" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rl_block"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical" >
-            <ImageView
-                android:id="@+id/iv_block"
-                android:layout_width="@dimen/dp34"
-                android:layout_height="@dimen/dp34"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@null"
-                android:scaleType="fitXY"
-                android:src="@color/col_app" />
-            <TextView
-                android:id="@+id/tv_block"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_block"
-                android:layout_centerHorizontal="true"
-                android:text="@string/app_name"
-                android:textColor="@color/letter_grey_deep_2"
-                android:textSize="@dimen/px22" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rl_family"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical" >
-            <ImageView
-                android:id="@+id/iv_family"
-                android:layout_width="@dimen/dp34"
-                android:layout_height="@dimen/dp34"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@null"
-                android:scaleType="fitXY"
-                android:src="@color/col_app" />
-            <TextView
-                android:id="@+id/tv_family"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iv_family"
-                android:layout_centerHorizontal="true"
-                android:text="@string/app_name"
-                android:textColor="@color/letter_grey_deep_2"
-                android:textSize="@dimen/px22" />
-        </RelativeLayout>
-    </LinearLayout>
+        android:orientation="horizontal" />
     <com.wudayu.daf.views.BaseViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ll_bottom" />
+        android:layout_above="@id/psb_main" />
 </RelativeLayout>
