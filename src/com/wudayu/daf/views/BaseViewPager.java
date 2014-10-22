@@ -41,7 +41,7 @@ public class BaseViewPager extends ViewPager {
 		init();
 	}
 
-	void init() {}
+	private void init() {}
 
 	public void setRollable(boolean rollable) {
 		if (rollTimer != null) {

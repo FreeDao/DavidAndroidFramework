@@ -32,27 +32,37 @@ public class ViewPagerAdapter extends PagerAdapter {
 		this.notifyDataSetChanged();
 	}
 
+	public void addView(View view) {
+		this.views.add(view);
+
+		this.notifyDataSetChanged();
+	}
+
 	public void removeAll() {
 		this.views.clear();
 		this.notifyDataSetChanged();
 	}
 
 	public int getCount() {
-		return views.size();
+		return this.views.size();
 	}
 
 	public View getView(int position) {
-		return views.get(position);
+		return this.views.get(position);
+	}
+
+	public List<View> getViews() {
+		return this.views;
 	}
 
 	public Object instantiateItem(ViewGroup container, int position) {
 		container.addView(views.get(position));
 
-		return views.get(position);
+		return this.views.get(position);
 	}
 
 	public void destroyItem(ViewGroup container, int position, Object object) {
-		container.removeView(views.get(position));
+		container.removeView(this.views.get(position));
 	}
 
 	public boolean isViewFromObject(View view, Object object) {

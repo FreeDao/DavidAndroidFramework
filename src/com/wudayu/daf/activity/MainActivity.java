@@ -91,7 +91,6 @@ public class MainActivity extends BaseActivity {
 		testSecondFragment.onActivityResult(requestCode, resultCode, data);
 		testThirdFragment.onActivityResult(requestCode, resultCode, data);
 
-
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
