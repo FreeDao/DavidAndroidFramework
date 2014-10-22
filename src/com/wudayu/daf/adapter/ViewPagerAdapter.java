@@ -43,6 +43,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		this.notifyDataSetChanged();
 	}
 
+	@Override
 	public int getCount() {
 		return this.views.size();
 	}
@@ -55,16 +56,19 @@ public class ViewPagerAdapter extends PagerAdapter {
 		return this.views;
 	}
 
+	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 		container.addView(views.get(position));
 
 		return this.views.get(position);
 	}
 
+	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
 		container.removeView(this.views.get(position));
 	}
 
+	@Override
 	public boolean isViewFromObject(View view, Object object) {
 		return view == object;
 	}

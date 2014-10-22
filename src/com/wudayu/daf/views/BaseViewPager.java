@@ -24,10 +24,11 @@ import android.view.MotionEvent;
 public class BaseViewPager extends ViewPager {
 
 	private static final int ROLL = 0x10;
-	private static final int TIME_GAP = 10000;
+	private static final int TIME_GAP = 5000;
 
-	Timer rollTimer = null;
-	boolean isTouching = false;
+	private Timer rollTimer = null;
+	private boolean isTouching = false;
+	private int timeGap = -1;
 
 	public BaseViewPager(Context context) {
 		super(context);
@@ -63,7 +64,7 @@ public class BaseViewPager extends ViewPager {
 				msg.what = BaseViewPager.ROLL;
 				mHandler.sendMessage(msg);
 			}
-		}, BaseViewPager.TIME_GAP, BaseViewPager.TIME_GAP);
+		}, getRightTimeGap(), getRightTimeGap());
 	}
 
 	@Override
@@ -98,6 +99,16 @@ public class BaseViewPager extends ViewPager {
 
 		super.onDetachedFromWindow();
 	}
+
+	public void setTimeGap(int timeGap) {
+		this.timeGap = timeGap;
+	}
+
+	private int getRightTimeGap() {
+		return this.timeGap > 0 ? this.timeGap : TIME_GAP;
+	}
+
+	
 
 	/* 设置页面滚动时间代码，就目前而言不需要
 	void init() {

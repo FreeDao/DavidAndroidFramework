@@ -61,26 +61,45 @@ public class BannerView extends RelativeLayout {
 		this.addView(mViewPager, lpViewPager);
 
 		RelativeLayout.LayoutParams lpIndicator = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, mContext.getResources().getDimensionPixelSize(R.dimen.dp06));
-		lpIndicator.setMargins(0, 0, 0, mContext.getResources().getDimensionPixelSize(R.dimen.dp04));
+		lpIndicator.bottomMargin = mContext.getResources().getDimensionPixelSize(R.dimen.dp04);
 		lpIndicator.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 		this.addView(mIndicator, lpIndicator);
 	}
 
+	/**
+	 * get all views list
+	 * @return views list
+	 */
 	public List<View> getViews() {
 		return this.mAdapter.getViews();
 	}
 
+	/**
+	 * set views which need display
+	 * @param views
+	 */
 	public void setViews(List<View> views) {
 		this.mAdapter.addAll(views);
 
 		mAdapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * add a single view
+	 */
 	public void addView(View view) {
 		this.mAdapter.addView(view);
 
 		mAdapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * set BannerView into rolling mode
+	 * @param timeGap，Banner rolling time gap in millisecond
+	 */
+	public void setRolling(int timeGap) {
+		this.mViewPager.setTimeGap(timeGap);
+		this.mViewPager.setRollable(true);
+	}
 
 }

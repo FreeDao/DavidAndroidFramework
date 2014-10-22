@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.wudayu.daf.R;
+import com.wudayu.daf.listener.BannerViewOnItemClickListener;
 import com.wudayu.daf.views.BannerView;
 
 /**
@@ -33,20 +34,25 @@ public class TestFirstFragment extends BaseFragment {
 
 	@AfterViews
 	void afterViews() {
+		testData();
+	}
+
+	private void testData() {
 		List<View> views = new ArrayList<View>();
 		ImageView view = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view.setBackgroundColor(Color.parseColor("#00FF00"));
-		// view.setOnClickListener(new BannerOnClickListener(this.getActivity(), banner));
+		view.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIRST));
 		ImageView view2 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view2.setBackgroundColor(Color.parseColor("#FF0000"));
-		// view.setOnClickListener(new BannerOnClickListener(this.getActivity(), banner));
+		view2.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_SECOND));
 		ImageView view3 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view3.setBackgroundColor(Color.parseColor("#0000FF"));
-		// view.setOnClickListener(new BannerOnClickListener(this.getActivity(), banner));
+		view3.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_THIRD));
 		views.add(view);
 		views.add(view2);
 		views.add(view3);
 		bvBanner.setViews(views);
+		bvBanner.setRolling(3000);
 	}
 	
 }
