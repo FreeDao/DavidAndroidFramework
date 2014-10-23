@@ -11,10 +11,12 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.wudayu.daf.R;
 import com.wudayu.daf.listener.BannerViewOnItemClickListener;
 import com.wudayu.daf.views.BannerView;
+import com.wudayu.daf.views.CountDownView;
 
 /**
  *
@@ -31,6 +33,8 @@ public class TestFirstFragment extends BaseFragment {
 
 	@ViewById
 	BannerView bvBanner;
+	@ViewById
+	CountDownView tvCountDown;
 
 	@AfterViews
 	void afterViews() {
@@ -38,6 +42,7 @@ public class TestFirstFragment extends BaseFragment {
 	}
 
 	private void testData() {
+		// Homepage Banner
 		List<View> views = new ArrayList<View>();
 		ImageView view = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view.setBackgroundColor(Color.parseColor("#00FF00"));
@@ -53,6 +58,15 @@ public class TestFirstFragment extends BaseFragment {
 		views.add(view3);
 		bvBanner.setViews(views);
 		bvBanner.setRolling(3000);
+
+		// CountDownView
+		tvCountDown.setCountDownAndStart(3000, 10);
+		tvCountDown.setOnCountDownFinishListener(new CountDownView.OnCountDownFinishListener() {
+			@Override
+			public void onFinish() {
+				Toast.makeText(TestFirstFragment.this.getActivity(), "Done", Toast.LENGTH_LONG).show();
+			}
+		});
 	}
 	
 }
