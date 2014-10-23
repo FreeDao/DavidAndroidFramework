@@ -23,6 +23,9 @@ public class BannerViewOnItemClickListener implements OnClickListener {
 	public static final int IDENTIFIER_TEST_FIRST = 101;
 	public static final int IDENTIFIER_TEST_SECOND = 102;
 	public static final int IDENTIFIER_TEST_THIRD = 103;
+	public static final int IDENTIFIER_TEST_FOURTH = 104;
+	public static final int IDENTIFIER_TEST_FIFTH = 105;
+	public static final int IDENTIFIER_TEST_SIXTH = 106;
 
 	public BannerViewOnItemClickListener(Context context, int pageIdentifier) {
 		this.mContext = context;
@@ -40,6 +43,15 @@ public class BannerViewOnItemClickListener implements OnClickListener {
 			break;
 		case IDENTIFIER_TEST_THIRD:
 			Toast.makeText(mContext, "Banner third", Toast.LENGTH_SHORT).show();
+			break;
+		case IDENTIFIER_TEST_FOURTH:
+			Toast.makeText(mContext, "Banner fourth", Toast.LENGTH_SHORT).show();
+			break;
+		case IDENTIFIER_TEST_FIFTH:
+			Toast.makeText(mContext, "Banner fifth", Toast.LENGTH_SHORT).show();
+			break;
+		case IDENTIFIER_TEST_SIXTH:
+			Toast.makeText(mContext, "Banner sixth", Toast.LENGTH_SHORT).show();
 			break;
 		}
 	}

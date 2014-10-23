@@ -42,25 +42,37 @@ public class TestFirstFragment extends BaseFragment {
 	}
 
 	private void testData() {
-		// Homepage Banner
+		// HomePageBanner
 		List<View> views = new ArrayList<View>();
-		ImageView view = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view.setBackgroundColor(Color.parseColor("#00FF00"));
-		view.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIRST));
+		ImageView view1 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
+		view1.setBackgroundColor(Color.parseColor("#00FF00"));
+		view1.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIRST));
 		ImageView view2 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view2.setBackgroundColor(Color.parseColor("#FF0000"));
 		view2.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_SECOND));
 		ImageView view3 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
 		view3.setBackgroundColor(Color.parseColor("#0000FF"));
 		view3.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_THIRD));
-		views.add(view);
+		ImageView view4 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
+		view4.setBackgroundColor(Color.parseColor("#FF00FF"));
+		view4.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FOURTH));
+		ImageView view5 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
+		view5.setBackgroundColor(Color.parseColor("#00FFFF"));
+		view5.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIFTH));
+		ImageView view6 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
+		view6.setBackgroundColor(Color.parseColor("#FFFF00"));
+		view6.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_SIXTH));
+		views.add(view1);
 		views.add(view2);
 		views.add(view3);
+		views.add(view4);
+		views.add(view5);
+		views.add(view6);
 		bvBanner.setViews(views);
 		bvBanner.setRolling(3000);
 
 		// CountDownView
-		tvCountDown.setCountDownAndStart(3000, 10);
+		tvCountDown.setCountDownAndStart(30000000, 10);
 		tvCountDown.setOnCountDownFinishListener(new CountDownView.OnCountDownFinishListener() {
 			@Override
 			public void onFinish() {
