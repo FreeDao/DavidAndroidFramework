@@ -14,4 +14,8 @@
         android:layout_gravity="right"
         android:layout_marginRight="@dimen/dp05"
         android:layout_marginTop="@dimen/dp05" />
+    <EditText
+        android:id="@+id/edt_test_autohide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

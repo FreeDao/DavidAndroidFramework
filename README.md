@@ -26,16 +26,22 @@
 3. ###com.wudayu.daf.constant
 ####BroadcastActions
 		BroadcastActions contains the indentifier for every local BroadcastReceiver.
+####Constant
+		Constant is a very important Class for recording a lot of Constant in the application like, Server URL, Download Path and Flags.
 
 4. ###com.wudayu.daf.fragment
 ####BaseFragment
 		BaseFragment is the root class for every Fragment. It initialize the mContext which point to getActivity(). Nothing more.
 
-5. ###com.wudayu.daf.listener
+5. ###com.wudayu.daf.generic
+####Utils
+		Utils is what its name like. It contains a lot of utils such as, debug tool, double click checker and so on.
+
+6. ###com.wudayu.daf.listener
 ####BannerViewOnItemClickListener
 		BannerViewOnItemClickListener is the OnClickListener for the Banner which is on the first fragment.
 
-6. ###com.wudayu.daf.views
+7. ###com.wudayu.daf.views
 ####imagezoom.GestureImageView
 		The classes in imagezoom package are supporting for imagezoom.GestureImageView. GestureImageView is a subclass for ImageView, but it can zoom in and zoom out.
 ####BannerView

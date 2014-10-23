@@ -18,7 +18,7 @@ public class Constant {
 
 	public static String SD_CARD_DAF = SD_CARD + "/daf/";
 	public static String SD_DOWNLOAD = SD_CARD + "/daf/download/";
-	public static String SD_DATA = SD_CARD + "/daf/data/";
+	public static String SD_LOG = SD_CARD + "/daf/log/";
 	public static String SD_IMAGE_CACHE = SD_CARD + "/daf/image/cache/";
 
 	public static final String PREFIX_HTTP = "http://";
