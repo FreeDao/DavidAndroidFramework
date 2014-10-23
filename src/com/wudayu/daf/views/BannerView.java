@@ -23,7 +23,7 @@ import com.wudayu.daf.adapter.ViewPagerAdapter;
 public class BannerView extends RelativeLayout {
 
 	private Context mContext = null;
-	private BaseViewPager mViewPager = null;
+	private SwitchViewPager mViewPager = null;
 	private DotPageIndicator mIndicator = null;
 	private ViewPagerAdapter mAdapter = null;
 
@@ -48,7 +48,7 @@ public class BannerView extends RelativeLayout {
 	private void init() {
 		this.mAdapter = new ViewPagerAdapter();
 
-		this.mViewPager = new BaseViewPager(this.mContext);
+		this.mViewPager = new SwitchViewPager(this.mContext);
 		this.mIndicator = new DotPageIndicator(this.mContext);
 		initLayouts();
 

@@ -14,7 +14,7 @@ import android.view.MotionEvent;
  *
  **/
 
-public class NoSlideViewPager extends BaseViewPager {
+public class NoSlideViewPager extends SwitchViewPager {
 
 	public NoSlideViewPager(Context context) {
 		super(context);

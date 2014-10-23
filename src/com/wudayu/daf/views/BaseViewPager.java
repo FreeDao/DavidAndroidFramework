@@ -1,114 +1,28 @@
 package com.wudayu.daf.views;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 
 /**
  *
  * @author: Wu Dayu
  * @En_Name: David Wu
  * @E-mail: wudayu@gmail.com
- * @Created Time: Oct 21, 2014, 10:29:17 AM
+ * @Created Time: Oct 23, 2014, 3:27:51 PM
  * @Description: David Wu created this file.
  *
  **/
 
 public class BaseViewPager extends ViewPager {
 
-	private static final int ROLL = 0x10;
-	private static final int TIME_GAP = 5000;
-
-	private Timer rollTimer = null;
-	private boolean isTouching = false;
-	private int timeGap = -1;
-
 	public BaseViewPager(Context context) {
 		super(context);
-
-		init();
 	}
 
 	public BaseViewPager(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
-		init();
 	}
-
-	private void init() {}
-
-	public void setRollable(boolean rollable) {
-		if (rollTimer != null) {
-			rollTimer.cancel();
-			rollTimer = null;
-		}
-
-		if (this.getAdapter() == null || !rollable || this.getAdapter().getCount() < 2) {
-			isTouching = false;
-			
-			return;
-		}
-
-		rollTimer = new Timer();
-		rollTimer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				Message msg = new Message();
-				msg.what = BaseViewPager.ROLL;
-				mHandler.sendMessage(msg);
-			}
-		}, getRightTimeGap(), getRightTimeGap());
-	}
-
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		switch (event.getAction()) {
-			case MotionEvent.ACTION_MOVE:
-				isTouching = true;
-				break;
-			case MotionEvent.ACTION_UP:
-				isTouching = false;
-				break;
-			default:
-				break;
-		}
-		return super.onTouchEvent(event);
-	}
-
-	@SuppressLint("HandlerLeak")
-	Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (msg.what == BaseViewPager.ROLL && !isTouching) {
-				BaseViewPager.this.setCurrentItem((BaseViewPager.this.getCurrentItem() + 1) % getAdapter().getCount());
-			}
-		}
-	};
-
-	@Override
-	protected void onDetachedFromWindow() {
-		if (rollTimer != null)
-			rollTimer.cancel();
-
-		super.onDetachedFromWindow();
-	}
-
-	public void setTimeGap(int timeGap) {
-		this.timeGap = timeGap;
-	}
-
-	private int getRightTimeGap() {
-		return this.timeGap > 0 ? this.timeGap : TIME_GAP;
-	}
-
-	
 
 	/* 设置页面滚动时间代码，就目前而言不需要
 	void init() {

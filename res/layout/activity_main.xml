@@ -10,7 +10,7 @@
         android:background="@drawable/shape_ll_bottom_main_activity"
         android:baselineAligned="true"
         android:orientation="horizontal" />
-    <com.wudayu.daf.views.BaseViewPager
+    <com.wudayu.daf.views.SwitchViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

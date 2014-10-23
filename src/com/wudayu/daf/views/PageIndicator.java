@@ -12,7 +12,7 @@ import android.support.v4.view.ViewPager;
  *
  **/
 
-public interface PageIndicator extends BaseViewPager.OnPageChangeListener {
+public interface PageIndicator extends SwitchViewPager.OnPageChangeListener {
     /**
      * Bind the indicator to a ViewPager.
      *

@@ -19,7 +19,7 @@ import com.wudayu.daf.fragment.TestSecondFragment;
 import com.wudayu.daf.fragment.TestSecondFragment_;
 import com.wudayu.daf.fragment.TestThirdFragment;
 import com.wudayu.daf.fragment.TestThirdFragment_;
-import com.wudayu.daf.views.BaseViewPager;
+import com.wudayu.daf.views.SwitchViewPager;
 import com.wudayu.daf.views.PageSelectBar;
 
 
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
 	private static final int PAGE_COUNT = 3;
 
 	@ViewById
-	BaseViewPager vpMain;
+	SwitchViewPager vpMain;
 	@ViewById
 	PageSelectBar psbMain;
 
