@@ -311,7 +311,6 @@ public class Utils {
 		return imeistring;
 	}
 
-	
 	/**
 	 * Reserves two decimal fractions
 	 * 
@@ -323,8 +322,7 @@ public class Utils {
 		double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		return f1;
 	}
-	
-	
+
 	/**
 	 * Reserves two decimal fractions
 	 * 

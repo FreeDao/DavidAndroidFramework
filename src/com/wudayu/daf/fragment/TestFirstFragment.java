@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.wudayu.daf.R;
+import com.wudayu.daf.generic.UILImageHandler;
 import com.wudayu.daf.generic.Utils;
+import com.wudayu.daf.generic.interfaces.IImageHandler;
 import com.wudayu.daf.listener.BannerViewOnItemClickListener;
 import com.wudayu.daf.views.BannerView;
 import com.wudayu.daf.views.CountDownView;
@@ -39,6 +41,11 @@ public class TestFirstFragment extends BaseFragment {
 	CountDownView tvCountDown;
 	@ViewById
 	EditText edtTestAutohide;
+	@ViewById
+	ImageView ivTest;
+
+	@Bean(UILImageHandler.class)
+	IImageHandler imageHandler;
 
 	@AfterViews
 	void afterViews() {
@@ -49,22 +56,22 @@ public class TestFirstFragment extends BaseFragment {
 		// HomePageBanner
 		List<View> views = new ArrayList<View>();
 		ImageView view1 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view1.setBackgroundColor(Color.parseColor("#00FF00"));
+		imageHandler.loadImage("http://pic1.win4000.com/wallpaper/d/53e85d4307c60.jpg", view1);
 		view1.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIRST));
 		ImageView view2 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view2.setBackgroundColor(Color.parseColor("#FF0000"));
+		imageHandler.loadImage("http://d.hiphotos.baidu.com/image/pic/item/72f082025aafa40fc8e997d5a964034f78f0198e.jpg", view2);
 		view2.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_SECOND));
 		ImageView view3 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view3.setBackgroundColor(Color.parseColor("#0000FF"));
+		imageHandler.loadImage("http://pic1.win4000.com/wallpaper/f/538eb7e2ee428.jpg", view3);
 		view3.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_THIRD));
 		ImageView view4 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view4.setBackgroundColor(Color.parseColor("#FF00FF"));
+		imageHandler.loadImage("http://e.hiphotos.baidu.com/image/h%3D900%3Bcrop%3D0%2C0%2C1440%2C900/sign=6c166314be315c605c9567efbd8aa861/4ec2d5628535e5dd6bf96ade74c6a7efcf1b62de.jpg", view4);
 		view4.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FOURTH));
 		ImageView view5 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view5.setBackgroundColor(Color.parseColor("#00FFFF"));
+		imageHandler.loadImage("http://pic1.win4000.com/wallpaper/f/538eb7e2ee428.jpg", view5);
 		view5.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_FIFTH));
 		ImageView view6 = (ImageView) LayoutInflater.from(this.getActivity()).inflate(R.layout.item_img_banner_view, null);
-		view6.setBackgroundColor(Color.parseColor("#FFFF00"));
+		imageHandler.loadImage("http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1301/14/c1/17394579_1358152845572_800x600.jpg", view6);
 		view6.setOnClickListener(new BannerViewOnItemClickListener(this.getActivity(), BannerViewOnItemClickListener.IDENTIFIER_TEST_SIXTH));
 		views.add(view1);
 		views.add(view2);
@@ -85,6 +92,9 @@ public class TestFirstFragment extends BaseFragment {
 				Utils.autoCloseKeyboard(TestFirstFragment.this.getActivity(), edtTestAutohide);
 			}
 		});
+
+		// ImageView
+		imageHandler.loadImage("http://d.hiphotos.baidu.com/image/pic/item/72f082025aafa40fc8e997d5a964034f78f0198e.jpg", ivTest);
 	}
 	
 }

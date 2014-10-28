@@ -17,5 +17,13 @@
     <EditText
         android:id="@+id/edt_test_autohide"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text" />
+    <ImageView
+        android:id="@+id/iv_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF00FF00"
+        android:contentDescription="@null"
+        android:scaleType="fitXY" />
 </LinearLayout>

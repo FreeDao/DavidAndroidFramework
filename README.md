@@ -2,7 +2,7 @@
 
 ## Overview
 
-**DavidAndroidFramework**, a framework for developing android faster, include image utils, network utils, views and so on.
+**DavidAndroidFramework**, a framework for developing android app faster, include image utils, network utils, views and so on.
 
 ## Parts
 	
