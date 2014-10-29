@@ -24,7 +24,7 @@ public class BaseViewPager extends ViewPager {
 		super(context, attrs);
 	}
 
-	/* 设置页面滚动时间代码，就目前而言不需要
+	/* ViewPager rolling time code
 	void init() {
 		try {
             Field field = ViewPager.class.getDeclaredField("mScroller");

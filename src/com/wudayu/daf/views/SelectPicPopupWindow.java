@@ -37,27 +37,20 @@ public class SelectPicPopupWindow extends PopupWindow {
 		btnTakePhoto = (Button) mMenuView.findViewById(R.id.btn_take_photo);
 		btnPickPhoto = (Button) mMenuView.findViewById(R.id.btn_pick_photo);
 		btnCancel = (Button) mMenuView.findViewById(R.id.btn_cancel);
-		// 取消按钮
+		// cancel button
 		btnCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dismiss();
 			}
 		});
-		// 设置SelectPicPopupWindow的View
 		this.setContentView(mMenuView);
-		// 设置SelectPicPopupWindow弹出窗体的宽
 		this.setWidth(LayoutParams.MATCH_PARENT);
-		// 设置SelectPicPopupWindow弹出窗体的高
 		this.setHeight(LayoutParams.WRAP_CONTENT);
-		// 设置SelectPicPopupWindow弹出窗体可点击
 		this.setFocusable(true);
-		// 设置SelectPicPopupWindow弹出窗体动画效果
 		this.setAnimationStyle(R.style.PopupAnimation);
-		// 实例化一个ColorDrawable颜色为半透明
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
-		// 设置SelectPicPopupWindow弹出窗体的背景
 		this.setBackgroundDrawable(dw);
-		// mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
+		// add OnTouchListener to mMenuView
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				int height = mMenuView.findViewById(R.id.pop_layout).getTop();
@@ -73,7 +66,6 @@ public class SelectPicPopupWindow extends PopupWindow {
 	}
 
 	public void setOnClickListener(OnClickListener itemsOnClick) {
-		// 设置按钮监听
 		btnPickPhoto.setOnClickListener(itemsOnClick);
 		btnTakePhoto.setOnClickListener(itemsOnClick);
 	}

@@ -28,19 +28,19 @@ public class PageSelectBar extends LinearLayout {
 
 	private Context mContext;
 	private List<View> mItems;
-	// 图片资源组active
+	// image resources active
 	private int[] imgActived = new int[]{R.drawable.page_select_01_on, R.drawable.page_select_02_on, R.drawable.page_select_03_on};
-	// 图片资源组inactive
+	// image resources inactive
 	private int[] imgInActived = new int[]{R.drawable.page_select_01_off, R.drawable.page_select_02_off, R.drawable.page_select_03_off};
-	// 文字组
+	// words
 	private int[] texts = new int[]{R.string.page_select_01, R.string.page_select_02, R.string.page_select_03};
-	// 文字颜色组active
+	// words color active
 	private int textsColorActived = R.color.col_app;
-	// 文字颜色组inactive
+	// words color inactive
 	private int textsColorInActived = R.color.letter_grey_deep_11;
-	// 背景资源组active
+	// background resource active
 	private int[] bgActived = null;
-	// 背景资源组inactive
+	// background resource inactive
 	private int[] bgInActived = null;
 
 	private PageSelectBarOnPageSelectedListener mPageSelectedListener = null;
