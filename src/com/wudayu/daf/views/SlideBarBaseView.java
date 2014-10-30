@@ -79,9 +79,6 @@ public class SlideBarBaseView extends View {
 		mPaint.setAntiAlias(true);
 	}
 
-	/**
-	 * 設置索引
-	 */
 	public void setIndexs(char[] wantedIndexs) {
 		this.indexs = wantedIndexs;
 		invalidate();
