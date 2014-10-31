@@ -13,4 +13,6 @@
     <string name="page_select_01">Fragment01</string>
     <string name="page_select_02">Fragment02</string>
     <string name="page_select_03">Fragment03</string>
+    <!-- 错误信息 -->
+    <string name="error_server_went_wrong">Can not access server, please try that later.</string>
 </resources>

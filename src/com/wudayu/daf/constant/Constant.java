@@ -44,6 +44,7 @@ public class Constant {
 
 	/** Used by the Class which implements INetHandler */
 	public static final String SERVER_URL_FOR_SPRING = PREFIX_DEFAULT + SERVER_URL_NAME;
+	public static final String SERVER_URL_WEATHER = "http://www.weather.com.cn/data/cityinfo";
 
 	/** Debug Mode, TODO Change it to false when publish */
 	public static final boolean DEBUG = true;
