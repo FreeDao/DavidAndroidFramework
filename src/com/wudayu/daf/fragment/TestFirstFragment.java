@@ -15,9 +15,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.wudayu.daf.R;
-import com.wudayu.daf.generic.UILImageHandler;
 import com.wudayu.daf.generic.Utils;
-import com.wudayu.daf.generic.interfaces.IImageHandler;
+import com.wudayu.daf.handler.IImageHandler;
+import com.wudayu.daf.handler.UILImageHandler;
 import com.wudayu.daf.listener.BannerViewOnItemClickListener;
 import com.wudayu.daf.views.BannerView;
 import com.wudayu.daf.views.CountDownView;

@@ -1,4 +1,4 @@
-package com.wudayu.daf.generic.interfaces;
+package com.wudayu.daf.handler;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

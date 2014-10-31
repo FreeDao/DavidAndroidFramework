@@ -1,4 +1,4 @@
-package com.wudayu.daf.generic;
+package com.wudayu.daf.handler;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,7 +25,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
-import com.wudayu.daf.generic.interfaces.IFileHandler;
+import com.wudayu.daf.generic.SDCard;
+import com.wudayu.daf.generic.Utils;
 import com.wudayu.daf.generic.interfaces.ISDCard;
 
 /**

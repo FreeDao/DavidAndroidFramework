@@ -1,4 +1,4 @@
-package com.wudayu.daf.generic;
+package com.wudayu.daf.handler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,10 +45,10 @@ import com.wudayu.daf.R;
 import com.wudayu.daf.constant.Constant;
 import com.wudayu.daf.constant.ImageLoaderHelper;
 import com.wudayu.daf.constant.ReqCode;
-import com.wudayu.daf.generic.interfaces.IFileHandler;
-import com.wudayu.daf.generic.interfaces.IFileHandler.CacheDir;
-import com.wudayu.daf.generic.interfaces.IImageHandler;
+import com.wudayu.daf.generic.SDCard;
+import com.wudayu.daf.generic.Utils;
 import com.wudayu.daf.generic.interfaces.ISDCard;
+import com.wudayu.daf.handler.IFileHandler.CacheDir;
 import com.wudayu.daf.views.SelectPicPopupWindow;
 
 /**

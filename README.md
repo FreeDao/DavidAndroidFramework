@@ -28,6 +28,10 @@
 		BroadcastActions contains the indentifier for every local BroadcastReceiver.
 ####Constant
 		Constant is a very important Class for recording a lot of Constant in the application like, Server URL, Download Path and Flags.
+####ImageLoaderHelper
+		ImageLoaderHelper is a help class for ImageLoader. When using images from a file on the SDCard or Drawable, we need this Helper.
+####ReqCode
+		ReqCode is a constant for Request Code.
 
 4. ###com.wudayu.daf.fragment
 ####BaseFragment
@@ -36,12 +40,26 @@
 5. ###com.wudayu.daf.generic
 ####Utils
 		Utils is what its name like. It contains a lot of utils such as, debug tool, double click checker and so on.
+####interfaces.ISDCard
+		interface for SDCard.
+####SDCard
+		SDCard is a class for access and control SDCard.
 
-6. ###com.wudayu.daf.listener
+6. ###com.wudayu.daf.handler
+####IFileHandler
+		IFileHandler is an interface for FileHander.
+####FileHandler
+		FileHandler helps user do staff that controlling files.
+####IImageHandler
+		IImageHandler is an interface for XXXImageHandler.
+####UILImageHandler
+		UILImageHander is an implementation of IImageHandler, is a kind of ImageHandler. UILImageHander uses Universal Image Loader to deal with images.
+		
+7. ###com.wudayu.daf.listener
 ####BannerViewOnItemClickListener
 		BannerViewOnItemClickListener is the OnClickListener for the Banner which is on the first fragment.
 
-7. ###com.wudayu.daf.views
+8. ###com.wudayu.daf.views
 ####imagezoom.GestureImageView
 		The classes in imagezoom package are supporting for imagezoom.GestureImageView. GestureImageView is a subclass for ImageView, but it can zoom in and zoom out.
 ####BannerView

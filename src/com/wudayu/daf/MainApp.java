@@ -6,8 +6,8 @@ import org.androidannotations.annotations.EApplication;
 import android.app.Application;
 
 import com.nostra13.universalimageloader.utils.L;
-import com.wudayu.daf.generic.UILImageHandler;
-import com.wudayu.daf.generic.interfaces.IImageHandler;
+import com.wudayu.daf.handler.IImageHandler;
+import com.wudayu.daf.handler.UILImageHandler;
 
 /**
  *
