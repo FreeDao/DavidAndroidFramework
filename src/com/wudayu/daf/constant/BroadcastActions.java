@@ -14,7 +14,7 @@ public class BroadcastActions {
 
 	private static final String PKG = "cn.wudayu.daf_";
 
-	/** 关闭所有的Activity */
+	/** close all Activity */
 	public static final String FINISH_ACTIVITY = PKG + "finish_activity";
 
 }
