@@ -32,6 +32,10 @@
 		ImageLoaderHelper is a help class for ImageLoader. When using images from a file on the SDCard or Drawable, we need this Helper.
 ####ReqCode
 		ReqCode is a constant for Request Code.
+####Timeout
+		The seconds for instead of timeout.
+####WeatherCityCode
+		The city code of weather.
 
 4. ###com.wudayu.daf.fragment
 ####BaseFragment
@@ -59,7 +63,23 @@
 ####BannerViewOnItemClickListener
 		BannerViewOnItemClickListener is the OnClickListener for the Banner which is on the first fragment.
 
-8. ###com.wudayu.daf.views
+8. ###com.wudayu.model
+####DafWeather
+		DafWeather is the weather model for receive weather Json.
+
+9. ###com.wudayu.net
+####client.WeatherClient
+		WeatherClient is a interface for getting weather information.
+####converter.MappingJacksonDavidHttpMessageConverter
+		This is a custom Converter for parsing TEXT_HTML kind of Json.
+####protocol.WeatherResult
+		WeatherResult is the direct object that contains the direct Json from web interface.
+####INetHandler
+		INetHandler is the interface for connecting server.
+####SAFNetHandler
+		SAFNetHandler is the implementation for INetHandler by using Spring For Android.
+
+10. ###com.wudayu.daf.views
 ####imagezoom.GestureImageView
 		The classes in imagezoom package are supporting for imagezoom.GestureImageView. GestureImageView is a subclass for ImageView, but it can zoom in and zoom out.
 ####BannerView
