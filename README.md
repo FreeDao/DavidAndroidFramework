@@ -7,7 +7,6 @@
 ## Parts
 	
 **1) Package and Class Introduction**  
-**2) How 2 use it**
 
 ## Package and Class Introduction
 
