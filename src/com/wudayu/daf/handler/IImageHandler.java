@@ -7,7 +7,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 
 /**
  *
@@ -64,9 +65,15 @@ public interface IImageHandler {
 
 	public void loadImage(String uri, ImageView imageView);
 
-	public void loadImage(String uri, ImageView imageView, DisplayImageOptions options);
+	public void loadImage(String uri, ImageView imageView, ImageLoadingProgressListener progresslistener);
+
+	public void loadImage(String uri, ImageView imageView, ImageLoadingListener loadingListener, ImageLoadingProgressListener progresslistener);
 
 	public void loadRoundCornerImage(String uri, ImageView imageView);
+
+	public void loadRoundCornerImage(String uri, ImageView imageView, ImageLoadingProgressListener progresslistener);
+
+	public void loadRoundCornerImage(String uri, ImageView imageView, ImageLoadingListener loadingListener, ImageLoadingProgressListener progresslistener);
 
 	public void loadHeaderImage(String uri, ImageView imageView);
 

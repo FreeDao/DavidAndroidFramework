@@ -41,6 +41,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.wudayu.daf.R;
 import com.wudayu.daf.constant.Constant;
 import com.wudayu.daf.constant.ImageLoaderHelper;
@@ -173,36 +174,59 @@ public class UILImageHandler implements IImageHandler {
 
 	@Override
 	public void loadHeaderImage(String uri, ImageView imageView) {
-		loadImage(uri, imageView, headerUilDisplay);
+		loadImage(uri, imageView, headerUilDisplay, null, null);
 	}
 
 	@Override
 	public void loadRoundCornerImage(String uri, ImageView imageView) {
-		loadImage(uri, imageView, roundUilDisplay);
+		loadRoundCornerImage(uri, imageView, null, null);
+	}
+
+	public void loadRoundCornerImage(String uri, ImageView imageView, ImageLoadingProgressListener progresslistener) {
+		loadRoundCornerImage(uri, imageView, null, progresslistener);
+	}
+
+	public void loadRoundCornerImage(String uri, ImageView imageView, ImageLoadingListener loadingListener, ImageLoadingProgressListener progresslistener) {
+		loadImage(uri, imageView, roundUilDisplay, loadingListener, progresslistener);
 	}
 
 	@Override
 	public void loadImage(String uri, ImageView imageView) {
-		loadImage(uri, imageView, defaultUilDisplay);
+		loadImage(uri, imageView, null, null);
 	}
 
-	public void loadImage(String uri, ImageView imageView, DisplayImageOptions options) {
-		// 使用图片缓存，如果缓存中有对应图片则不从网络加载，而从本地加载
+	@Override
+	public void loadImage(String uri, ImageView imageView, ImageLoadingProgressListener progresslistener) {
+		loadImage(uri, imageView, defaultUilDisplay, null, progresslistener);
+
+		// the method that must be implemented in ImageLoadingProgressListener is like this:
+		// void onProgressUpdate(String imageUri, View view, int current, int total);
+	}
+
+	@Override
+	public void loadImage(String uri, ImageView imageView, ImageLoadingListener loadingListener, ImageLoadingProgressListener progresslistener) {
+		loadImage(uri, imageView, defaultUilDisplay, loadingListener, progresslistener);
+	}
+
+	private void loadImage(String uri, ImageView imageView, DisplayImageOptions options, ImageLoadingListener outsideLoadingListener, ImageLoadingProgressListener progressListener) {
+		// use image cache
 		String fileName = file.getFileNameInUrl(uri);
 		String fullPath = mImageCacheDir + fileName;
 		if (file.isFileExists(fullPath)) {
-			imageLoader.displayImage(ImageLoaderHelper.URI_PREFIX_FILE + fullPath, imageView, options);
+			imageLoader.displayImage(ImageLoaderHelper.URI_PREFIX_FILE + fullPath, imageView, options, outsideLoadingListener, progressListener);
 		} else {
-			imageLoader.displayImage(uri, imageView, options, new SaveCacheImageLoadingListener(fullPath));
+			imageLoader.displayImage(uri, imageView, options, new SaveCacheImageLoadingListener(fullPath, outsideLoadingListener), progressListener);
 		}
 	}
 
 	public class SaveCacheImageLoadingListener implements ImageLoadingListener {
 
 		String fullPath = null;
+		ImageLoadingListener outsideLoadingListener = null;
 
-		public SaveCacheImageLoadingListener(String fullPath) {
+		public SaveCacheImageLoadingListener(String fullPath, ImageLoadingListener outsideLoadingListener) {
 			this.fullPath = fullPath;
+			this.outsideLoadingListener = outsideLoadingListener;
 		}
 
 		/**
@@ -212,7 +236,10 @@ public class UILImageHandler implements IImageHandler {
 		 * @param view     View for image
 		 */
 		@Override
-		public void onLoadingStarted(String imageUri, View view) {}
+		public void onLoadingStarted(String imageUri, View view) {
+			if (outsideLoadingListener != null)
+				outsideLoadingListener.onLoadingStarted(imageUri, view);
+		}
 		/**
 		 * Is called when an error was occurred during image loading
 		 *
@@ -222,7 +249,10 @@ public class UILImageHandler implements IImageHandler {
 		 *                   loading was failed
 		 */
 		@Override
-		public void onLoadingFailed(String imageUri, View view, FailReason failReason) {}
+		public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+			if (outsideLoadingListener != null)
+				outsideLoadingListener.onLoadingFailed(imageUri, view, failReason);
+		}
 
 		/**
 		 * Is called when image is loaded successfully (and displayed in View if one was specified)
@@ -234,6 +264,9 @@ public class UILImageHandler implements IImageHandler {
 		@Override
 		public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 			file.saveBitmap(fullPath, loadedImage, CompressFormat.PNG);
+
+			if (outsideLoadingListener != null)
+				outsideLoadingListener.onLoadingComplete(imageUri, view, loadedImage);
 		}
 
 		/**
@@ -244,7 +277,8 @@ public class UILImageHandler implements IImageHandler {
 		 */
 		@Override
 		public void onLoadingCancelled(String imageUri, View view) {
-			
+			if (outsideLoadingListener != null)
+				outsideLoadingListener.onLoadingCancelled(imageUri, view);
 		}
 	}
 
@@ -560,7 +594,7 @@ public class UILImageHandler implements IImageHandler {
 		if (imm.isActive()) {
 			imm.hideSoftInputFromWindow(hangView.getWindowToken(), 0);
 		}
-		// 实例化SelectPicPopupWindow
+
 		final SelectPicPopupWindow menuWindow = new SelectPicPopupWindow(activity);
 		menuWindow.setOnClickListener(new OnClickListener() {
 			@Override
@@ -589,7 +623,7 @@ public class UILImageHandler implements IImageHandler {
 				}
 			}
 		});
-		// 显示窗口
+		// show the choose window
 		menuWindow.showAtLocation(hangView, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 	}
 
