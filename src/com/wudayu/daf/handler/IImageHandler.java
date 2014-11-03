@@ -55,7 +55,7 @@ public interface IImageHandler {
 	public String compress(String pathOri, int quality);
 
 	/**
-	 * The codes below are very useful.
+	 * The methods below are very useful.
 	 */
 	public void cleanImageCache();
 

@@ -72,8 +72,6 @@ public class UILImageHandler implements IImageHandler {
 	ISDCard mSDCard;
 	@Bean(FileHandler.class)
 	IFileHandler fileHandler;
-	@Bean(FileHandler.class)
-	IFileHandler file;
 
 	ImageLoader imageLoader = null;
 	ImageLoaderConfiguration defaultUilLoader = null;
@@ -103,7 +101,7 @@ public class UILImageHandler implements IImageHandler {
 
 	@Override
 	public void cleanImageCache(long size, long millSecAgo) {
-		file.cleanCache(mImageCacheDir, size, millSecAgo);
+		fileHandler.cleanCache(mImageCacheDir, size, millSecAgo);
 	}
 
 	private void initUIL() {
@@ -210,9 +208,9 @@ public class UILImageHandler implements IImageHandler {
 
 	private void loadImage(String uri, ImageView imageView, DisplayImageOptions options, ImageLoadingListener outsideLoadingListener, ImageLoadingProgressListener progressListener) {
 		// use image cache
-		String fileName = file.getFileNameInUrl(uri);
+		String fileName = fileHandler.getFileNameInUrl(uri);
 		String fullPath = mImageCacheDir + fileName;
-		if (file.isFileExists(fullPath)) {
+		if (fileHandler.isFileExists(fullPath)) {
 			imageLoader.displayImage(ImageLoaderHelper.URI_PREFIX_FILE + fullPath, imageView, options, outsideLoadingListener, progressListener);
 		} else {
 			imageLoader.displayImage(uri, imageView, options, new SaveCacheImageLoadingListener(fullPath, outsideLoadingListener), progressListener);
@@ -263,7 +261,7 @@ public class UILImageHandler implements IImageHandler {
 		 */
 		@Override
 		public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-			file.saveBitmap(fullPath, loadedImage, CompressFormat.PNG);
+			fileHandler.saveBitmap(fullPath, loadedImage, CompressFormat.PNG);
 
 			if (outsideLoadingListener != null)
 				outsideLoadingListener.onLoadingComplete(imageUri, view, loadedImage);
@@ -420,10 +418,8 @@ public class UILImageHandler implements IImageHandler {
 
 	@Override
 	public Bitmap getBitmapFromCachedFile(String url, int defRes) {
-		String path = fileHandler
-				.getCacheDirByType(IFileHandler.CacheDir.IMAGE)
-				+ file.getFileNameInUrl(url);
-		if (!file.isFileExists(path)) {
+		String path = fileHandler.getCacheDirByType(IFileHandler.CacheDir.IMAGE) + fileHandler.getFileNameInUrl(url);
+		if (!fileHandler.isFileExists(path)) {
 			return BitmapFactory.decodeResource(mContext.getResources(), defRes);
 		}
 		return BitmapFactory.decodeFile(path);

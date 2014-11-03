@@ -18,9 +18,9 @@ public class DafWeather {
 
 	private String cityId;
 	private String city;
-	private String temp1;// 温度
+	private String temp1;	// Temperature
 	private String temp2;
-	private String weather;// 天气
+	private String weather;	// Weather
 	private String ptime;
 
 	public String getCityId() {

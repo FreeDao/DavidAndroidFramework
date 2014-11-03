@@ -25,6 +25,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
+import com.wudayu.daf.constant.Constant;
 import com.wudayu.daf.generic.SDCard;
 import com.wudayu.daf.generic.Utils;
 import com.wudayu.daf.generic.interfaces.ISDCard;
@@ -535,7 +536,7 @@ public class FileHandler implements IFileHandler {
 	@Override
 	public void saveBitmap(String fullPath, Bitmap bitmap, CompressFormat format) {
 		File file = new File(fullPath);
-		saveBitmap(file, bitmap, 90, format);
+		saveBitmap(file, bitmap, Constant.IMAGE_QUALITY, format);
 	}
 
 	/**
