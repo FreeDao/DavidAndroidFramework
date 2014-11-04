@@ -56,7 +56,7 @@
 ####IImageHandler
 		IImageHandler is an interface for XXXImageHandler.
 ####UILImageHandler
-		UILImageHander is an implementation of IImageHandler, is a kind of ImageHandler. UILImageHander uses Universal Image Loader to deal with images.
+		UILImageHander is an implementation of IImageHandler, is a kind of ImageHandler. UILImageHander uses Universal Image Loader to deal with images. It can load image, load round corner image, load circle image, choose select image way.
 		
 7. ###com.wudayu.daf.listener
 ####BannerViewOnItemClickListener
