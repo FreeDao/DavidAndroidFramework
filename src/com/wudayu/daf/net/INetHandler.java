@@ -1,5 +1,6 @@
 package com.wudayu.daf.net;
 
+import com.wudayu.daf.net.protocol.DafStringResult;
 import com.wudayu.daf.net.protocol.WeatherResult;
 
 /**
@@ -28,4 +29,7 @@ public interface INetHandler {
 
 	/** 获取天气 */
 	public WeatherResult getForWeather(String code);
+
+	/** 上传图片 */
+	public DafStringResult postForUploadPic(String relationId, String fileKey, String imagePath);
 }

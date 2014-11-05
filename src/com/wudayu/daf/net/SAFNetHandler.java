@@ -6,7 +6,10 @@ import org.androidannotations.annotations.EBean.Scope;
 import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.rest.RestService;
 import org.androidannotations.api.rest.RestClientSupport;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import android.content.Context;
 
@@ -14,7 +17,9 @@ import com.wudayu.daf.MainApp;
 import com.wudayu.daf.constant.Constant;
 import com.wudayu.daf.constant.Timeout;
 import com.wudayu.daf.generic.Utils;
+import com.wudayu.daf.net.client.ImageClient;
 import com.wudayu.daf.net.client.WeatherClient;
+import com.wudayu.daf.net.protocol.DafStringResult;
 import com.wudayu.daf.net.protocol.WeatherResult;
 
 /**
@@ -59,6 +64,27 @@ public class SAFNetHandler implements INetHandler {
 			return mWeatherClient.getWeather(Constant.SERVER_URL_WEATHER, code);
 		} catch (Throwable e) {
 			Utils.debug("getForWeather : " + e.toString());
+		}
+		return null;
+	}
+
+	@RestService
+	ImageClient mImageClient;
+	@Override
+	public DafStringResult postForUploadPic(String relationId, String fileKey, String imagePath) {
+		try {
+
+			mImageClient.setHeader(HEADER_CONTENT_DISPOSITION, "form-data; name=\"" + fileKey + "\";");
+			mImageClient.setHeader(HEADER_CONTENT_TYPE, "multipart/form-data");
+			mImageClient.setHeader(HEADER_CONTENT_ENCODING, CONTANT_CODE);
+			setTimeout(mImageClient, Timeout.TIMEOUT_ONE_MINUTE);
+
+			MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
+			params.add(fileKey, new FileSystemResource(imagePath));
+
+			return mImageClient.uploadPic(Constant.SERVER_URL_FOR_SPRING, relationId == null ? "" : relationId, params);
+		} catch (Throwable e) {
+			Utils.debug("postForUploadPic : " + e.toString());
 		}
 		return null;
 	}
