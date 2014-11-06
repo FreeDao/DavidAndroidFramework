@@ -69,8 +69,12 @@
 9. ###com.wudayu.net
 ####client.WeatherClient
 		WeatherClient is a interface for getting weather information.
+####client.ImageClient
+		ImageClient is a client for posting a image to server.
 ####converter.MappingJacksonDavidHttpMessageConverter
 		This is a custom Converter for parsing TEXT_HTML kind of Json.
+####protocol.DafStringResult
+		DafStringResult is a kind of Result with a String value.
 ####protocol.WeatherResult
 		WeatherResult is the direct object that contains the direct Json from web interface.
 ####INetHandler
