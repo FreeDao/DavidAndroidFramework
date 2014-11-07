@@ -92,7 +92,7 @@
 ####CountDownView
 		CountDownView is used for showing count down.
 ####DotPageIndicator
-		DotPageIndicator is an indicator for showing the page which the user selected in the ViewPager. It's extend from PageIndicator.
+		DotPageIndicator is an indicator for showing the page which the user selected in the ViewPager. It's extending from PageIndicator.
 ####NoSlideViewPager
 		NoSlideViewPager is a subclass for ViewPager, it makes the ViewPager unslidable.
 ####PageIndicator
