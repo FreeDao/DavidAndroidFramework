@@ -7,6 +7,7 @@
 ## Parts
 	
 **1) Package and Class Introduction**  
+**2) Need to do**
 
 ## Package and Class Introduction
 
@@ -107,3 +108,7 @@
 		SlideBarBaseView is a vertical View for scrolling. It has alphabet, and it can control a listview to wherever the letter starts.
 ####SwitchViewPager
 		SwitchViewPager is a ViewPager that can automaticly switch pages.
+  
+## Need to do
+1. ###Database framework
+2. 
