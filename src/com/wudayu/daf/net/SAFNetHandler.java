@@ -4,6 +4,7 @@ import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.EBean.Scope;
 import org.androidannotations.annotations.RootContext;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.rest.RestService;
 import org.androidannotations.api.rest.RestClientSupport;
 import org.springframework.core.io.FileSystemResource;
@@ -19,6 +20,7 @@ import com.wudayu.daf.constant.Timeout;
 import com.wudayu.daf.generic.Utils;
 import com.wudayu.daf.net.client.ImageClient;
 import com.wudayu.daf.net.client.WeatherClient;
+import com.wudayu.daf.net.protocol.BaseResult;
 import com.wudayu.daf.net.protocol.DafStringResult;
 import com.wudayu.daf.net.protocol.WeatherResult;
 
@@ -82,10 +84,17 @@ public class SAFNetHandler implements INetHandler {
 			MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
 			params.add(fileKey, new FileSystemResource(imagePath));
 
-			return mImageClient.uploadPic(Constant.SERVER_URL_FOR_SPRING, relationId == null ? "" : relationId, params);
+			DafStringResult ss = mImageClient.uploadPic(Constant.SERVER_URL_FOR_SPRING, relationId == null ? "" : relationId, params);
+			ssss(ss);
+			return ss;
 		} catch (Throwable e) {
 			Utils.debug("postForUploadPic : " + e.toString());
 		}
 		return null;
+	}
+
+	@UiThread
+	void ssss(BaseResult br) {
+		
 	}
 }
