@@ -13,13 +13,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 import com.wudayu.daf.activity.MainActivity_;
 import com.wudayu.daf.constant.ExtraNames;
+import com.wudayu.daf.generic.Utils;
 
 /**
  *
@@ -43,7 +43,7 @@ public class PushService extends Service {
 
 	Timer timer = null;
 
-	public static final long PUSH_GAP = 10000;
+	public static final long PUSH_GAP = 1000;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -74,9 +74,11 @@ public class PushService extends Service {
 	class PushTimerTask extends TimerTask {
 
 		Context context;
+		int i;
 
 		public PushTimerTask(Context context) {
 			this.context = context;
+			this.i = 0;
 		}
 
 		@Override
@@ -88,7 +90,7 @@ public class PushService extends Service {
 					.setAutoCancel(true)
 			        .setSmallIcon(R.drawable.ic_launcher)
 			        .setContentTitle(getString(R.string.app_name))//getString(R.string.app_name))
-			        .setContentText("testContent");
+			        .setContentText("Current = " + i++);
 
 			Intent resultIntent = new Intent(context, MainActivity_.class);
 			resultIntent.putExtra(ExtraNames.PUSH_TYPE, keyCode);
@@ -104,13 +106,7 @@ public class PushService extends Service {
 
 	@Override
 	public void onDestroy() {
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				PushService_.intent(getApplicationContext()).start();
-			}
-		}, 5000);
-
+		Utils.debug("Service onDestory() ------------");
 		super.onDestroy();
 	}
 }

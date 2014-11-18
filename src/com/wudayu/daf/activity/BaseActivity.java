@@ -23,16 +23,16 @@ import com.wudayu.daf.generic.Utils;
 
 public class BaseActivity extends FragmentActivity {
 
-	protected Context context;
+	protected Context mContext;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 
-		context = BaseActivity.this;
+		mContext = BaseActivity.this;
 
 		// register close all Activity Broadcast
-		LocalBroadcastManager.getInstance(context).registerReceiver(finishReceiver, new IntentFilter(BroadcastActions.FINISH_ACTIVITY));
+		LocalBroadcastManager.getInstance(mContext).registerReceiver(finishReceiver, new IntentFilter(BroadcastActions.FINISH_ACTIVITY));
 	}
 
 	private BroadcastReceiver finishReceiver = new BroadcastReceiver() {
@@ -45,7 +45,7 @@ public class BaseActivity extends FragmentActivity {
 	protected void onDestroy() {
 		// unregister close all Activity Broadcast
 		try {
-			LocalBroadcastManager.getInstance(context).unregisterReceiver(finishReceiver);
+			LocalBroadcastManager.getInstance(mContext).unregisterReceiver(finishReceiver);
 		} catch (Exception e) {
 			Utils.debug("BaseActivity : " + e.toString());
 		}

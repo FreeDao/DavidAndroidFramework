@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 
+import com.wudayu.daf.PushService_;
 import com.wudayu.daf.R;
 import com.wudayu.daf.adapter.MainActivityPageAdapter;
 import com.wudayu.daf.fragment.TestFirstFragment;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity {
 	@AfterViews
 	void afterViews() {
 		initFragments();
+		PushService_.intent(mContext).start();
 	}
 
 	private void initFragments() {
