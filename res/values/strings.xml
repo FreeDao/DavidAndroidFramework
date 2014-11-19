@@ -1,9 +1,11 @@
 <resources>
     <!-- 常用 -->
     <string name="app_name">DavidAndroidFramework</string>
+    <!-- 系统 -->
+    <string name="str_double_close">Press once again to exit</string>
     <!-- 工具 -->
     <string name="error_can_not_find_sdcard">SDCard is not available!</string>
-    <!-- 弹出框 -->
+    <!-- 图片弹出框 -->
     <string name="btn_take_photo">Take a Photo</string>
     <string name="btn_pick_photo">Choose a Photo</string>
     <string name="btn_select_pic_cancel">Cancel</string>

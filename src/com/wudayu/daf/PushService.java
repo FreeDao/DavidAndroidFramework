@@ -6,19 +6,15 @@ import java.util.TimerTask;
 import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EService;
 import org.androidannotations.annotations.SystemService;
+import org.androidannotations.annotations.UiThread;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 
-import com.wudayu.daf.activity.MainActivity_;
-import com.wudayu.daf.constant.ExtraNames;
 import com.wudayu.daf.generic.Utils;
 
 /**
@@ -43,7 +39,7 @@ public class PushService extends Service {
 
 	Timer timer = null;
 
-	public static final long PUSH_GAP = 1000;
+	public static final long PUSH_GAP = 5000;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -83,6 +79,7 @@ public class PushService extends Service {
 
 		@Override
 		public void run() {
+			/*
 			String keyCode = "testKeyCode";
 
 			NotificationCompat.Builder mBuilder =
@@ -101,7 +98,15 @@ public class PushService extends Service {
 			mBuilder.setContentIntent(resultPendingIntent);
 		
 			notificationManager.notify(0x1022, mBuilder.build());
+			*/
+
+			toast(i++);
 		}
+	}
+
+	@UiThread
+	void toast(int i) {
+		Utils.debug("I = " + i);
 	}
 
 	@Override

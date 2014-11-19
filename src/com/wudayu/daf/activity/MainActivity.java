@@ -10,6 +10,7 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.Toast;
 
 import com.wudayu.daf.PushService_;
 import com.wudayu.daf.R;
@@ -20,8 +21,8 @@ import com.wudayu.daf.fragment.TestSecondFragment;
 import com.wudayu.daf.fragment.TestSecondFragment_;
 import com.wudayu.daf.fragment.TestThirdFragment;
 import com.wudayu.daf.fragment.TestThirdFragment_;
-import com.wudayu.daf.views.SwitchViewPager;
 import com.wudayu.daf.views.PageSelectBar;
+import com.wudayu.daf.views.SwitchViewPager;
 
 
 /**
@@ -94,6 +95,22 @@ public class MainActivity extends BaseActivity {
 		testThirdFragment.onActivityResult(requestCode, resultCode, data);
 
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	/*
+	 * Double press back button to exit
+	 */
+	private static long back_pressed = 0;
+	@Override
+	public void onBackPressed() {
+		if (back_pressed + 2000 > System.currentTimeMillis()) {
+			super.closeAllActivity();
+			super.onBackPressed();
+		} else {
+			Toast.makeText(getBaseContext(), getString(R.string.str_double_close), Toast.LENGTH_SHORT).show();
+		}
+
+		back_pressed = System.currentTimeMillis();
 	}
 
 }
