@@ -1,21 +1,27 @@
-package com.wudayu.daf;
+package com.wudayu.daf.service;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import org.androidannotations.annotations.App;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EService;
 import org.androidannotations.annotations.SystemService;
 import org.androidannotations.annotations.UiThread;
 
 import android.app.NotificationManager;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 
+import com.wudayu.daf.MainApp;
 import com.wudayu.daf.generic.Utils;
+import com.wudayu.daf.net.INetHandler;
+import com.wudayu.daf.net.SAFNetHandler;
+import com.wudayu.daf.receiver.PushReceiver_;
 
 /**
  *
@@ -30,9 +36,11 @@ import com.wudayu.daf.generic.Utils;
 @EService
 public class PushService extends Service {
 
-
 	@SystemService
 	NotificationManager notificationManager;
+
+	@Bean(SAFNetHandler.class)
+	INetHandler netHandler;
 
 	@App
 	MainApp mApp;
@@ -48,7 +56,9 @@ public class PushService extends Service {
 
 	@Override
 	public void onCreate() {
-		// registerBroadCast();
+		Utils.debug("onCreate() called ------------ ");
+		
+		registerBroadcast();
 
 		timer = new Timer();
 		timer.schedule(new PushTimerTask(this), 2000, PUSH_GAP);
@@ -56,14 +66,23 @@ public class PushService extends Service {
 		super.onCreate();
 	}
 
-	public void registerBroadCast() {
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		Utils.debug("onStartCommand() called ------------ ");
+
+		return super.onStartCommand(intent, flags, startId);
+	}
+
+	private void registerBroadcast() {
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
 
+		filter.addAction(Intent.ACTION_BOOT_COMPLETED);
 		filter.addAction(Intent.ACTION_BATTERY_CHANGED);
+		filter.addAction(Intent.ACTION_SCREEN_ON);
 
-		// BroadcastReceiver mReceiver = new PushDaemonReceiver();
+		BroadcastReceiver mReceiver = new PushReceiver_();
 
-		// registerReceiver(mReceiver, filter);
+		registerReceiver(mReceiver, filter);
 	}
 
 
@@ -73,6 +92,7 @@ public class PushService extends Service {
 		int i;
 
 		public PushTimerTask(Context context) {
+			Utils.debug("PushTimerTask() called ---------- ");
 			this.context = context;
 			this.i = 0;
 		}
@@ -106,7 +126,7 @@ public class PushService extends Service {
 
 	@UiThread
 	void toast(int i) {
-		Utils.debug("I = " + i);
+		Utils.debug("I = " + i + ", netHandler = " + netHandler.hashCode());
 	}
 
 	@Override

@@ -87,9 +87,10 @@ public class TestFirstFragment extends BaseFragment {
 		tvCountDown.setOnCountDownFinishListener(new CountDownView.OnCountDownFinishListener() {
 			@Override
 			public void onFinish() {
-				Toast.makeText(TestFirstFragment.this.getActivity(), "Done", Toast.LENGTH_LONG).show();
-				// Utils.autoCloseKeyboard
-				Utils.autoCloseKeyboard(TestFirstFragment.this.getActivity(), edtTestAutohide);
+				if (TestFirstFragment.this.getActivity() != null) {
+					Toast.makeText(TestFirstFragment.this.getActivity(), "Done", Toast.LENGTH_LONG).show();
+					Utils.autoCloseKeyboard(TestFirstFragment.this.getActivity(), edtTestAutohide);
+				}
 			}
 		});
 

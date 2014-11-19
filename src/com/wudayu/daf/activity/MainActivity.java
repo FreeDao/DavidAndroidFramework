@@ -10,9 +10,7 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.Toast;
 
-import com.wudayu.daf.PushService_;
 import com.wudayu.daf.R;
 import com.wudayu.daf.adapter.MainActivityPageAdapter;
 import com.wudayu.daf.fragment.TestFirstFragment;
@@ -21,6 +19,8 @@ import com.wudayu.daf.fragment.TestSecondFragment;
 import com.wudayu.daf.fragment.TestSecondFragment_;
 import com.wudayu.daf.fragment.TestThirdFragment;
 import com.wudayu.daf.fragment.TestThirdFragment_;
+import com.wudayu.daf.generic.Utils;
+import com.wudayu.daf.service.PushService_;
 import com.wudayu.daf.views.PageSelectBar;
 import com.wudayu.daf.views.SwitchViewPager;
 
@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity {
 			super.closeAllActivity();
 			super.onBackPressed();
 		} else {
-			Toast.makeText(getBaseContext(), getString(R.string.str_double_close), Toast.LENGTH_SHORT).show();
+			Utils.toastMessage(this, getString(R.string.str_double_close));
 		}
 
 		back_pressed = System.currentTimeMillis();
