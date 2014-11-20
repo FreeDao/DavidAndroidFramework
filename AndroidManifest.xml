@@ -31,7 +31,7 @@
                 <action android:name="android.intent.action.DATA_ACTIVITY" />
                 <action android:name="android.intent.action.DATA_STATE" />
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
         <activity
