@@ -129,9 +129,4 @@ public class PushService extends Service {
 		Utils.debug("I = " + i + ", netHandler = " + netHandler.hashCode());
 	}
 
-	@Override
-	public void onDestroy() {
-		Utils.debug("Service onDestory() ------------");
-		super.onDestroy();
-	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 
+import com.wudayu.daf.MainApp;
 import com.wudayu.daf.R;
 import com.wudayu.daf.adapter.MainActivityPageAdapter;
 import com.wudayu.daf.fragment.TestFirstFragment;
@@ -45,6 +47,9 @@ public class MainActivity extends BaseActivity {
 	@ViewById
 	PageSelectBar psbMain;
 
+	@App
+	MainApp mApp;
+
 	TestFirstFragment testFirstFragment = null;
 	TestSecondFragment testSecondFragment = null;
 	TestThirdFragment testThirdFragment = null;
@@ -52,7 +57,7 @@ public class MainActivity extends BaseActivity {
 	@AfterViews
 	void afterViews() {
 		initFragments();
-		PushService_.intent(mContext).start();
+		PushService_.intent(this).start();
 	}
 
 	private void initFragments() {
