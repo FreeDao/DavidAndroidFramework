@@ -79,6 +79,7 @@ public class PushService extends Service {
 		filter.addAction(Intent.ACTION_BOOT_COMPLETED);
 		filter.addAction(Intent.ACTION_BATTERY_CHANGED);
 		filter.addAction(Intent.ACTION_SCREEN_ON);
+		filter.addAction(Intent.ACTION_USER_PRESENT);
 
 		BroadcastReceiver mReceiver = new PushReceiver_();
 
