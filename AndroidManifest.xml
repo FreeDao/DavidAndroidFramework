@@ -32,6 +32,7 @@
                 <action android:name="android.intent.action.DATA_STATE" />
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.wudayu.daf.push" />
             </intent-filter>
         </receiver>
         <activity

@@ -129,4 +129,12 @@ public class PushService extends Service {
 		Utils.debug("I = " + i + ", netHandler = " + netHandler.hashCode());
 	}
 
+	@Override
+	public void onDestroy() {
+		Intent pushIntent = new Intent("com.wudayu.daf.push");
+		sendBroadcast(pushIntent);
+
+		super.onDestroy();
+	}
+
 }
