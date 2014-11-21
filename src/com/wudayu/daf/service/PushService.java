@@ -69,7 +69,7 @@ public class PushService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Utils.debug("onStartCommand() called ------------ ");
-
+		flags = START_STICKY;
 		return super.onStartCommand(intent, flags, startId);
 	}
 
